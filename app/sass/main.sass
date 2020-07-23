@@ -267,6 +267,9 @@ body
 		color: #FFFFFF
 		margin-bottom: 2rem
 .reviews
+	&__slider
+		width: 100%
+		position: relative
 	&__slider_container
 		width: 95%
 		margin: 0 auto
@@ -341,7 +344,26 @@ body
 		cursor: pointer
 		&:focus
 			outline: none
-
+	.icon-prev-arrow
+		font-size: 34px
+		transition: all 0.35s ease
+		&:before
+			font-family: iconmoon
+			content: "\e900"
+			color: #C1C0BF
+		&:hover:before
+			color: #2CB027
+			transition: all 0.35s ease
+	.icon-next-arrow
+		font-size: 34px
+		transition: all 0.35s ease
+		&:before
+			font-family: iconmoon
+			content: "\e901"
+			color: #C1C0BF
+		&:hover:before
+			color: #2CB027
+			transition: all 0.35s ease
 .present
 	background-image: url(../img/present-bg.jpg)
 	padding: 1.5rem 0
