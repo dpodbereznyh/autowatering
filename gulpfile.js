@@ -41,6 +41,7 @@ gulp.task('scripts', function() {
         'app/libs/jquery/dist/jquery.min.js',
         'app/libs/menu/jquery.smartmenus.min.js',
         'app/libs/fancybox/jquery.fancybox.min.js',
+        'app/libs/swiper/js/swiper.min.js',
         'app/js/common.js', // Always at the end
     ])
         .pipe(concat('scripts.min.js'))

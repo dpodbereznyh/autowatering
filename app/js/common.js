@@ -150,3 +150,24 @@ function closeMenu()
     });
   }
 }
+//Reviews Slider
+var reviewsSlider = new Swiper ('.reviews__slider_container', {
+    slideClass: 'reviews__slide',
+    wrapperClass: 'reviews__slider_wrapper',
+    slidesPerView: 2,
+    spaceBetween: 32,
+    navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+    },
+    breakpoints: {
+        320: {
+            slidesPerView: 1,
+            spaceBetween: 10
+        },
+        770: {
+            slidesPerView: 2,
+            spaceBetween: 10
+        }
+    }
+});

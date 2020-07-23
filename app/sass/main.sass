@@ -239,6 +239,7 @@ body
 		text-align: center
 
 .var
+	margin-bottom: 3rem
 	&__wrap
 		position: relative
 	&__wrap-info
@@ -265,9 +266,84 @@ body
 		line-height: 140%
 		color: #FFFFFF
 		margin-bottom: 2rem
+.reviews
+	&__slider_container
+		width: 95%
+		margin: 0 auto
+	&__slider_wrapper
+		width: 100%
+		list-style: none
+		padding: 0
+	&__slide
+		padding: 4px
+		background: rgba(137,223,134,1)
+		background: -moz-linear-gradient(top, rgba(137,223,134,1) 0%, rgba(72,141,69,1) 100%)
+		background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(137,223,134,1)), color-stop(100%, rgba(72,141,69,1)))
+		background: -webkit-linear-gradient(top, rgba(137,223,134,1) 0%, rgba(72,141,69,1) 100%)
+		background: -o-linear-gradient(top, rgba(137,223,134,1) 0%, rgba(72,141,69,1) 100%)
+		background: -ms-linear-gradient(top, rgba(137,223,134,1) 0%, rgba(72,141,69,1) 100%)
+		background: linear-gradient(to bottom, rgba(137,223,134,1) 0%, rgba(72,141,69,1) 100%)
+		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#89df86', endColorstr='#488d45', GradientType=0 )
+	&__slide_content
+		background: #fff
+		padding: 36px 35px
+	&__slide_img
+		width: 80px
+		height: 80px
+		border-radius: 50%
+		margin: 0 auto 20px
+		img
+			display: inline-block
+			max-width: 100%
+			width: 100%
+			height: auto
+			border-radius: 50%
+	&__slide_title
+		font-family: Roboto
+		font-style: normal
+		font-weight: 500
+		font-size: 20px
+		line-height: 100%
+		text-align: center
+		color: #201C1C
+		margin-bottom: 12px
+	&__slide_date
+		font-family: Roboto
+		font-style: normal
+		font-weight: normal
+		font-size: 16px
+		line-height: 100%
+		text-align: center
+		color: #9C9C9C
+		margin-bottom: 6px
+	&__slide_text
+		font-family: Roboto
+		font-style: normal
+		font-weight: normal
+		font-size: 16px
+		line-height: 160%
+		text-align: center
+		color: #201C1C
+		margin: 0
+	&__prev-arrow
+		position: absolute
+		top: 50%
+		left: 0
+		transform: translate(0, -50%)
+		cursor: pointer
+		&:focus
+			outline: none
+	&__next-arrow
+		position: absolute
+		top: 50%
+		right: 0
+		transform: translate(0, -50%)
+		cursor: pointer
+		&:focus
+			outline: none
 
 .present
-	background-color: #ECFFEB
+	background-image: url(../img/present-bg.jpg)
 	padding: 1.5rem 0
 	margin: 3rem 0
 	margin-bottom: 5rem
@@ -277,6 +353,7 @@ body
 		flex-direction: column
 		align-items: flex-start
 		justify-content: center
+		color: #fff
 	&__info-title
 		font-family: "Asket"
 		font-size: 34px
@@ -284,10 +361,12 @@ body
 		margin-bottom: 1rem
 	&__info-subtitle
 		font-weight: bold
-		font-size: 28px
+		font-size: 36px
 		line-height: 150%
+		span
+			font-size: 54px
 	&__info-text
-		font-size: 18px
+		font-size: 20px
 		line-height: 200%
 		margin-bottom: 2rem
 	.cmn-btn
