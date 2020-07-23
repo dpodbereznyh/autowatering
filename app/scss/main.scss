@@ -1,37 +1,53 @@
-// 1. Configuration and helpers
-@import "abstracts/module";
+@import "vars";
+@import "fonts";
+@import "libs";
 
-// 2. Vendors styles
-@import "vendors/module";
+::placeholder {
+	color: #666;
+}
 
-// 3. Base stuff
-@import "base/module";
+::selection {
+	background-color: $accent;
+	color: #fff;
+}
 
-// 4. Components
-@import "components/module";
+body {
+	font-size: 16px;
+	min-width: 320px;
+	position: relative;
+	line-height: 1.65;
+	font-family: $default-font;
+	overflow-x: hidden;
+	color: $text;
+	input, textarea {
+		border: #666 1px solid;
+		outline: none;
+		&:focus:required:invalid {
+			border-color: red;
+		}
+		&:required:valid {
+			border-color: green;
+		}
+	}
+}
 
-// 5. Layout-related sections
-@import "layout/module";
+.img-responsive {
+	display: block;
+	max-width: 100%;
+	height: auto;
+	&.img-width {
+		width: 100%;
+	}
+}
 
-// 6. Page-specific styles
-@import "pages/module";
+.text-center {
+	text-align: center;
+}
 
-//Fancybox
-@import "vendors/libs/fancybox/jquery.fancybox.min.css";
-
-//Smart Menu Core
-@import "vendors/libs/smart-menu-core/sm-core-css.css";
-
-
-
-
-
-
-
+b, strong {
+	font-weight: bold;
+}
 
 
 
-
-
-
-
+@import "media"; // Always at the end

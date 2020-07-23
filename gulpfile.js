@@ -1,4 +1,5 @@
-var syntax        = 'scss'; // Syntax: sass or scss;
+var syntax        = 'sass', // Syntax: sass or scss;
+    gulpversion   = '4'; // Gulp version: 3 or 4
 
 var gulp          = require('gulp'),
     gutil         = require('gulp-util' ),
@@ -10,10 +11,7 @@ var gulp          = require('gulp'),
     rename        = require('gulp-rename'),
     autoprefixer  = require('gulp-autoprefixer'),
     notify        = require('gulp-notify'),
-    rsync         = require('gulp-rsync'),
-    postcss       = require('gulp-postcss'),
-    pxtoviewport	= require('@apimediaru/postcss-px-to-viewport');
-
+    rsync         = require('gulp-rsync');
 
 gulp.task('browser-sync', function() {
     browserSync({
@@ -40,17 +38,13 @@ gulp.task('styles', function() {
 
 gulp.task('scripts', function() {
     return gulp.src([
-        // Without JQuery dependensies
-        // JQuery dependent
-        'app/js/vendors/jquery-3.4.1.js',
-        'app/js/vendors/jquery.smartmenus.min.js',
-        'app/js/vendors/swiper.min.js',
-        'app/js/vendors/jquery.fancybox.min.js',
+        'app/libs/jquery/dist/jquery.min.js',
+        'app/libs/menu/jquery.smartmenus.min.js',
+        'app/libs/fancybox/jquery.fancybox.min.js',
         'app/js/common.js', // Always at the end
     ])
         .pipe(concat('scripts.min.js'))
-        .pipe(uglify())
-        .on('error', function (err) { gutil.log(gutil.colors.red('[Error]'), err.toString()); })
+        // .pipe(uglify()) // Mifify js (opt.)
         .pipe(gulp.dest('app/js'))
         .pipe(browserSync.reload({ stream: true }))
 });
@@ -60,24 +54,35 @@ gulp.task('code', function() {
         .pipe(browserSync.reload({ stream: true }))
 });
 
-//gulp.task('rsync', function() {
-//	return gulp.src('app/**')
-//	.pipe(rsync({
-//		root: 'app/',
-//		hostname: 'username@yousite.com',
-//		destination: 'yousite/public_html/',
-//		// include: ['*.htaccess'], // Includes files to deploy
-//		exclude: ['*Thumbs.db', '**/*.DS_Store'], // Excludes files from deploy
-//		recursive: true,
-//		archive: true,
-//		silent: false,
-//		compress: true
-//	}))
-//});
-
-gulp.task('watch', function() {
-    gulp.watch('app/'+syntax+'/**/*.'+syntax+'', gulp.parallel('styles'));
-    gulp.watch(['app/libs/**/*.js', 'app/js/common.js', 'app/js/vendors/**/*.js'], gulp.parallel('scripts'));
-    gulp.watch('app/*.html', gulp.parallel('code'))
+gulp.task('rsync', function() {
+    return gulp.src('app/**')
+        .pipe(rsync({
+            root: 'app/',
+            hostname: 'username@yousite.com',
+            destination: 'yousite/public_html/',
+            // include: ['*.htaccess'], // Includes files to deploy
+            exclude: ['**/Thumbs.db', '**/*.DS_Store'], // Excludes files from deploy
+            recursive: true,
+            archive: true,
+            silent: false,
+            compress: true
+        }))
 });
-gulp.task('default', gulp.parallel('styles', 'scripts', 'browser-sync', 'watch'));
+
+if (gulpversion == 3) {
+    gulp.task('watch', ['styles', 'scripts', 'browser-sync'], function() {
+        gulp.watch('app/'+syntax+'/**/*.'+syntax+'', ['styles']);
+        gulp.watch(['libs/**/*.js', 'app/js/common.js'], ['scripts']);
+        gulp.watch('app/*.html', ['code'])
+    });
+    gulp.task('default', ['watch']);
+}
+
+if (gulpversion == 4) {
+    gulp.task('watch', function() {
+        gulp.watch('app/'+syntax+'/**/*.'+syntax+'', gulp.parallel('styles'));
+        gulp.watch(['libs/**/*.js', 'app/js/common.js'], gulp.parallel('scripts'));
+        gulp.watch('app/*.html', gulp.parallel('code'))
+    });
+    gulp.task('default', gulp.parallel('styles', 'scripts', 'browser-sync', 'watch'));
+}
