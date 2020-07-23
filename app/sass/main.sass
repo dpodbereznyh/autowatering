@@ -463,13 +463,48 @@ body
 
 .answer
 	margin: 3rem 0
+	&__list
+		padding: 0
+		list-style: none
+	&__item
+		display: flex
+		align-items: center
+		margin-bottom: 12px
+		p
+			font-family: Roboto
+			font-style: normal
+			font-weight: 500
+			font-size: 20px
+			line-height: 140%
+			color: #969696
+			margin: 0
+		span
+			min-width: 16px
+			height: 16px
+			border: 1px solid #346832
+			border-radius: 50%
+			position: relative
+			margin-right: 7px
+			&:after
+				content: ""
+				position: absolute
+				display: block
+				width: 8px
+				height: 8px
+				border-radius: 50%
+				background: #2CB027
+				top: 50%
+				left: 50%
+				transform: translate(-50%, -50%)
 	&-border
+		position: relative
 		border-radius: 2px
 		padding: 10px
 		background: linear-gradient( to right, #89DF86 0%, #488D45 76.56%)
 	&__wrap
-		padding: 3rem
+		padding: 4rem
 		background-color: #FFF
+
 	&__wrap-info
 		display: flex
 		flex-direction: column
@@ -484,6 +519,38 @@ body
 		font-size: 20px
 		color: #969696
 		margin-bottom: 2rem
+	&__wrap-img
+		position: absolute
+		right: 0
+		width: 339px
+		height: fit-content
+		transform: translate(-10px, -10px)
+		bottom: 0
+		img
+
+			width: 100%
+			height: auto
+			display: inline-block
+	&__engener
+		position: absolute
+		bottom: 0
+		right: 0
+		transform: translate(-328px, -100%)
+	&__engener_post
+		font-family: Roboto
+		font-style: normal
+		font-weight: 300
+		font-size: 16px
+		line-height: 150%
+		color: #313131
+		margin: 0
+	&__engener_name
+		font-family: Roboto
+		font-style: italic
+		font-weight: 500
+		font-size: 18px
+		line-height: 150%
+		margin: 0
 	&-form-input
 		margin-bottom: 2rem
 	&-form-btn
@@ -529,7 +596,7 @@ body
 		transform: translateY( -50% )
 		right: 13%
 		background-color: #fff
-		max-width: 500px
+		max-width: 600px
 		padding: 3rem
 	&__wrap-title
 		font-weight: 500
