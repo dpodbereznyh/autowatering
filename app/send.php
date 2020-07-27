@@ -6,8 +6,7 @@ require (__DIR__.'/smtp_grid/Exception.php');
 require (__DIR__.'/smtp_grid/PHPMailer.php');
 require (__DIR__.'/smtp_grid/SMTP.php');
 
-//$recipient_mail1 = "support@lak33.ru";
-$recipient_mail1 = "pdv@apimedia.ru";
+$recipient_mail1 = "zakaz@vsedlyasada.com";
 
 $mail = new PHPMailer;
 try {
@@ -78,7 +77,7 @@ if (isset($_POST['input-dal'])) {
 
 // Письмо
 $mail->isHTML(true);
-$mail->Subject = 'Заявка с сайта питомник.вседлясада.com'; // Заголовок письма
+$mail->Subject = 'Заявка с сайта автополив.вседлясада.com'; // Заголовок письма
 $mail->Body = $message; // Текст письма
 $mail->CharSet = "utf-8";
 // Результат
